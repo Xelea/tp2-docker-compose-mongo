@@ -16,7 +16,7 @@ jobs:
         run: docker build -t my-app-python:1.0.0 -f ./api/Dockerfile ./api
       - name: Build Mongo for scanning
         run: docker build -t my-app-mongo:1.0.0 -f ./mongo/Dockerfile ./mongo
-      - name: Docker Python Scout Scan
+      - name: Docker Scout Scan Python
         uses: docker/scout-action@v1
         with:
           command: cves
@@ -24,7 +24,7 @@ jobs:
           file: ./api/Dockerfile
           only-severities: critical,high
           exit-code: true
-      - name : Docker Mongo Scout Scan
+      - name : Docker Scout Scan Mongo
         uses: docker/scout-action@v1
         with:
           command: cves
