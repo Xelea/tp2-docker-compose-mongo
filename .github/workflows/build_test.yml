@@ -41,6 +41,8 @@ jobs:
           only-update: true
       - name: Build the stack
         run: docker compose up -d
+        env:
+           CODECOV_TOKEN: ${{ secrets.ENV_TOKEN }}
       - name: Docker ps
         run: docker ps
       - name: Docker inspect health
