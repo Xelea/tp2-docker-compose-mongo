@@ -39,10 +39,14 @@ jobs:
           only-severities: critical,high
           exit-code: false
           only-update: true
+      - name: Generate .env
+        run: |
+          cat > .env <<EOF
+          MYSQL_ROOT_PASSWORD= ${{ secrets.ENV_TOKEN }}
+          EOF
+        shell: bash
       - name: Build the stack
         run: docker compose up -d
-        env:
-           MYSQL_ROOT_PASSWORD: ${{ secrets.ENV_TOKEN }}
       - name: Docker ps
         run: docker ps
       - name: Docker inspect health
