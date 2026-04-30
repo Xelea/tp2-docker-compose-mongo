@@ -42,7 +42,12 @@ jobs:
       - name: Generate .env
         run: |
           cat > .env <<EOF
-          MYSQL_ROOT_PASSWORD= ${{ secrets.ENV_TOKEN }}
+          MONGO_ROOT_USER=${{ secrets.MONGO_ROOT_USER }}
+          MONGO_ROOT_PASSWORD=${{ secrets.MONGO_ROOT_PASSWORD }}
+          MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }}
+          MYSQL_DATABASE=${{ secrets.MYSQL_DATABASE }}
+          MYSQL_USER=${{ secrets.MYSQL_USER }}
+          MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }}
           EOF
         shell: bash
       - name: Build the stack
