@@ -39,4 +39,9 @@ jobs:
           only-severities: critical,high
           exit-code: false
           only-update: true
-          
+      - name: Build the stack
+        run: docker compose up -d
+      - name: Docker ps
+        run: docker ps
+      - name: Docker inspect health
+        run: docker inspect {{ status.health }} == "healthy" || exit 1
