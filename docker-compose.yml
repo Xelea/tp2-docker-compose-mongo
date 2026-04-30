@@ -13,6 +13,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+      start-period: 20s
     volumes:
       - mongo_data:/data/db
 
@@ -29,6 +30,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+      start-period: 20s
     volumes: 
        - mysql_data:/var/lib/mysql
        - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
