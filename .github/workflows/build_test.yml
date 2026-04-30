@@ -42,7 +42,7 @@ jobs:
       - name: Build the stack
         run: docker compose up -d
         env:
-           .env: ${{ secrets.ENV_TOKEN }}
+           MYSQL_ROOT_PASSWORD: ${{ secrets.ENV_TOKEN }}
       - name: Docker ps
         run: docker ps
       - name: Docker inspect health
